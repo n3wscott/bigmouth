@@ -1,0 +1,140 @@
+.bigmouth-ribbon {
+    width: 100%;
+    height: 40vh;
+    background-color: #e09100;
+    flex-shrink: 0;
+}
+
+.bigmouth-main {
+    margin-top: -35vh;
+    flex-shrink: 0;
+}
+
+.bigmouth-header .mdl-layout__header-row {
+    padding-left: 40px;
+}
+
+.bigmouth-logo-image {
+    height: 100px;
+    padding-top: 35px;
+}
+
+.bigmouth-container {
+    max-width: 1600px;
+    width: calc(100% - 16px);
+    margin: 0 auto;
+}
+
+.bigmouth-content {
+    border-radius: 15px;
+    padding: 20px 30px;
+    overflow-x: auto;
+}
+
+.bigmouth-layout.is-small-screen .bigmouth-content {
+    padding: 10px 15px;
+}
+
+.bigmouth-content h3 {
+    margin-top: 48px;
+}
+
+.bigmouth-table {
+    width: calc(100% - 16px);
+}
+
+.bigmouth-list-item {
+    width: calc(100% - 16px);
+}
+
+.bigmouth-fab {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+}
+
+.bigmouth-fab[bigmouth-connected=true] {
+    background: #6f883e !important;
+}
+
+.bigmouth-fab[bigmouth-connected=false] {
+    background: #9c242e !important;
+}
+
+.bigmouth-footer {
+    padding-left: 40px;
+}
+
+.bigmouth-footer .mdl-mini-footer--link-list a {
+    font-size: 13px;
+}
+
+pre {
+    padding: 5px; margin: 5px;
+}
+
+.json-string {
+    color: green;
+}
+
+.json-umber {
+    color: darkorange;
+}
+
+.json-boolean {
+    color: blue;
+}
+
+.json-null {
+    color: magenta;
+}
+
+.json-key {
+    color: red;
+}
+
+canvas {
+    width: 100%;
+    height: 64px;
+}
+
+li.ce-attribute {
+    padding-bottom: 0;
+    padding-top: 0;
+    /*background: #18ffff;*/
+}
+
+ul.mdl-list.ce-attributes {
+    margin: 0;
+}
+
+.ce-attribute div {
+    padding-bottom: 0;
+    /*background: #18ffff;*/
+}
+
+.mdl-textfield__label {
+    color: #00c853;
+    height: 64px;
+    /*background: #18ffff;*/
+}
+
+.ce-specversion {
+    background: white;
+    color: darkgray;
+    margin-left: 5px;
+}
+
+.ce-specversion .mdl-chip__contact {
+    background: lightgray;
+    color: white;
+}
+
+.mdl-data-table td, .mdl-data-table td .mdl-data-table__select {
+    vertical-align: top;
+}
+
+p.ce-data, .json-string {    word-break: break-all;
+    white-space: normal;
+
+}

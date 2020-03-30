@@ -1,0 +1,10 @@
+
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: bigmouth
+spec:
+  template:
+    spec:
+      containers:
+        - image: github.com/n3wscott/bigmouth/cmd/bigmouth
