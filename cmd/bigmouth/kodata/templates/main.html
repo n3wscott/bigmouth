@@ -6,11 +6,15 @@
             <input class="mdl-textfield__input" type="text" id="target" value="http://example.com">
             <label class="mdl-textfield__label" for="target">Target</label>
         </div>
+        <label id="cloudevents-mode" for="mode" class="mdl-switch mdl-js-switch mdl-js-ripple-effect">
+            <input type="checkbox" id="mode" class="mdl-switch__input">
+            <span class="mdl-switch__label">Binary Mode</span>
+        </label>
         <div class="bigmouth-yaml mdl-textfield mdl-js-textfield">
-            <textarea class="mdl-textfield__input" id="w3mission" rows="4" cols="50">
+            <textarea class="mdl-textfield__input" id="yaml" rows="4" cols="50">
 {{template "example.yaml"}}
             </textarea>
-            <label class="mdl-textfield__label" for="w3mission">Full address</label>
+            <label class="mdl-textfield__label" for="yaml">YAML</label>
         </div>
     </div>
     <div class="mdl-cell mdl-cell--1-col mdl-cell--hide-tablet mdl-cell--hide-phone"></div>
@@ -72,11 +76,34 @@
                 window.scrollTop = window.scrollHeight - window.clientHeight;
             }
         };
+        // Handle any errors that occur.
+        sock.onerror = function(error) {
+            console.log('WebSocket Error: ' + error);
+        };
+
+        let yamlInput = document.getElementById("yaml");
+
+        let mode = document.getElementById("mode");
+        mode.onchange = function () {
+            if (mode.getAttribute("disabled")) {
+                mode.innerText = "Structured Mode"
+            } else {
+                mode.innerText = "Binary Mode"
+            }
+        };
 
         let fab = document.getElementById("fab");
         fab.setAttribute("bigmouth-connected", "false");
         fab.onclick = function(){
-            alert("do http invoke!")
+            let modeType = "binary";
+            if (mode.getAttribute("disabled")) {
+                modeType = "structured"
+            }
+
+            sock.send(JSON.stringify({
+                "mode": modeType,
+                "yaml": yamlInput.value,
+            }));
         };
 
     });

@@ -91,5 +91,46 @@ func (c *Controller) WSHandler(ws *websocket.Conn) {
 		send:   make(chan interface{}),
 	}
 	manager.register <- client
+	go reader(ws)
 	client.write()
+}
+
+type message struct {
+	Yaml string `json:"yaml"`
+	Mode string `json:"mode"`
+	Target string `json:"target"`
+}
+
+func reader(conn *websocket.Conn) {
+	//b := make([]byte, 0, 1024*10) // TODO: set higher?
+	//for {
+	//	// read in a message
+	//	n, err := conn.Read(b)
+	//	if err != nil {
+	//		log.Println(n, err)
+	//		return
+	//	}
+	//	if n > 0 {
+	//		fmt.Println("read ", n, string(b))
+	//	}
+	//}
+
+	//
+
+	for {
+		// allocate our container struct
+		var m message
+		// receive a message using the codec
+		if err := websocket.JSON.Receive(conn, &m); err != nil {
+			log.Println(err)
+			continue
+		}
+		log.Println("Received message:", m.Yaml)
+		//// send a response
+		//m2 := message{"Thanks for the message!"}
+		//if err := websocket.JSON.Send(ws, m2); err != nil {
+		//	log.Println(err)
+		//	break
+		//}
+	}
 }
